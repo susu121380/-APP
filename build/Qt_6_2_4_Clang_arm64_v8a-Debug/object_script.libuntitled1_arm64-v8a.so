@@ -1,0 +1,16 @@
+drawecurve.obj
+main.obj
+mainwindow.obj
+my_bluetooth.obj
+my_dialog.obj
+my_weather.obj
+singleton.obj
+widget.obj
+qrc_Appback.obj
+moc_drawecurve.obj
+moc_mainwindow.obj
+moc_my_bluetooth.obj
+moc_my_dialog.obj
+moc_my_weather.obj
+moc_singleton.obj
+moc_widget.obj

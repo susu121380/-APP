@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\QTtest\\untitled1\\build\\Qt_6_2_4_Clang_arm64_v8a-Debug\\android-build\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "C:\\Qt\\6.2.4\\android_arm64_v8a\\src\\android\\java\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "-1,-1",
+                        "startColumns": "-1,-1",
+                        "startOffsets": "-1,-1"
+                    },
+                    "to": {
+                        "startLines": "20,22",
+                        "startColumns": "4,4",
+                        "startOffsets": "783,1003",
+                        "endColumns": "107,97",
+                        "endOffsets": "886,1096"
+                    }
+                },
+                {
+                    "source": "C:\\QTtest\\untitled1\\build\\Qt_6_2_4_Clang_arm64_v8a-Debug\\android-build\\res\\values\\libs.xml",
+                    "from": {
+                        "startLines": "-1,-1,8,-1,-1,-1",
+                        "startColumns": "-1,-1,4,-1,-1,-1",
+                        "startOffsets": "-1,-1,211,-1,-1,-1",
+                        "endLines": "-1,-1,18,-1,-1,-1",
+                        "endColumns": "-1,-1,12,-1,-1,-1",
+                        "endOffsets": "-1,-1,705,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "2,5,8,19,21,23",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,109,235,732,891,1101",
+                        "endLines": "4,7,18,19,21,23",
+                        "endColumns": "12,12,12,50,111,47",
+                        "endOffsets": "104,230,727,778,998,1144"
+                    }
+                }
+            ]
+        }
+    ]
+}

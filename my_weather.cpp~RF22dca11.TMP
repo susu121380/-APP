@@ -1,0 +1,386 @@
+#include "my_weather.h"
+#include "ui_my_weather.h"
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QFrame>
+
+My_Weather::My_Weather(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::My_Weather)
+{
+    ui->setupUi(this);
+    Showlab=new QLabel(this);
+    Showlab ->setPixmap(QPixmap(":/plc/jpg/SHow_Back.jpg"));
+    Showlab ->setScaledContents(true);
+
+    //设置天气图标
+    nowstate=new QLabel();
+    nowstate ->setScaledContents(true);
+    QHBoxLayout *temlayout=new QHBoxLayout();
+    nowstate->setFixedSize(100,100);
+
+    //设置温度数值
+    nowtem=new QLabel();
+    nowtem->setFixedSize(150,100);
+    // 设置文本左对齐
+    nowtem->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    nowtem->setStyleSheet("QLabel {"
+        "      padding: 5px;"/* 内边距 */
+        "      margin: 5px; /* 外边距 */"
+        "      border-style: solid; /* 边框样式 */"
+        "      border-width: 0px; /* 边框宽度 */"
+        "      border-color: #1c7cd6; /* 边框颜色 */"
+        "      color: #ffffff; /* 文本颜色 */"
+        "      font-size: 46px; /* 字体大小 */"
+        "      font-weight: bold; /* 字体粗细 */"
+        "      font-family: Arial; /* 字体家族 */"
+        "      };");
+    temlayout->addWidget(nowstate);
+    temlayout->addWidget(nowtem);
+    QSpacerItem *temendSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+    temlayout->addItem(temendSpacer);
+
+    QHBoxLayout *hlayout=new QHBoxLayout();
+    QVBoxLayout *vlayout=new QVBoxLayout();
+
+    QHBoxLayout *AllHlayout=new QHBoxLayout();
+
+    //设置选择省和城市下拉框
+    provinceBox=new QComboBox();
+    cityBox=new QComboBox();
+
+    QSpacerItem *oneendSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+    QSpacerItem *twoendSpacer = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
+    hlayout->addWidget(provinceBox);
+    hlayout->addWidget(cityBox);
+    hlayout->addItem(oneendSpacer);
+    vlayout->addLayout(hlayout);
+    vlayout->addLayout(temlayout);
+    //vlayout->addItem(twoendSpacer);
+
+    QSpacerItem *threeSpacer = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
+    vlayout->addItem(threeSpacer);
+
+    //今日天气显示
+    Now_Hum=new QLabel(this);
+    Now_Hum->setText("湿度");
+    Now_Hum->setGeometry(70,180,50,50);
+    Now_Hum->setStyleSheet("QLabel {"
+                           "      background: transparent;"
+                           "      color: #ffffff; /* 文本颜色 */"
+                           "      font-size: 16px; /* 字体大小 */"
+                           "      font-family: Arial; /* 字体家族 */"
+                           "      };");
+    Now_HumNum=new QLabel(this);
+    Now_HumNum->setGeometry(70,200,50,50);
+    Now_HumNum->setStyleSheet("QLabel {"
+                           "      background: transparent;"
+                           "      color: #ffffff; /* 文本颜色 */"
+                           "      font-size: 16px; /* 字体大小 */"
+                           "      font-family: Arial; /* 字体家族 */"
+                           "      };");
+    //PM2.5
+    PMweather=new QLabel(this);
+    PMweather->setText("PM2.5");
+    PMweather->setGeometry(180,180,50,50);
+    PMweather->setStyleSheet("QLabel {"
+                              "      background: transparent;"
+                              "      color: #ffffff; /* 文本颜色 */"
+                              "      font-size: 16px; /* 字体大小 */"
+                              "      font-family: Arial; /* 字体家族 */"
+                              "      };");
+    PMweather_text=new QLabel(this);
+    PMweather_text->setText("- - - - - -");
+    PMweather_text->setGeometry(180,200,50,50);
+    PMweather_text->setStyleSheet("QLabel {"
+                              "      background: transparent;"
+                              "      color: #ffffff; /* 文本颜色 */"
+                              "      font-size: 16px; /* 字体大小 */"
+                              "      font-family: Arial; /* 字体家族 */"
+                              "      };");
+
+    //风向风级
+    wind_direct=new QLabel(this);
+    wind_direct->setGeometry(70,240,50,50);
+    wind_direct->setStyleSheet("QLabel {"
+                                  "      background: transparent;"
+                                  "      color: #ffffff; /* 文本颜色 */"
+                                  "      font-size: 16px; /* 字体大小 */"
+                                  "      font-family: Arial; /* 字体家族 */"
+                                  "      };");
+    wind_power=new QLabel(this);
+    wind_power->setGeometry(70,260,50,50);
+    wind_power->setStyleSheet("QLabel {"
+                                  "      background: transparent;"
+                                  "      color: #ffffff; /* 文本颜色 */"
+                                  "      font-size: 16px; /* 字体大小 */"
+                                  "      font-family: Arial; /* 字体家族 */"
+                                  "      };");
+
+    //空气质量
+    Quality=new QLabel(this);
+    Quality->setText("空气质量");
+    Quality->setGeometry(170,240,65,50);
+    Quality->setStyleSheet("QLabel {"
+                              "      background: transparent;"
+                              "      color: #ffffff; /* 文本颜色 */"
+                              "      font-size: 16px; /* 字体大小 */"
+                              "      font-family: Arial; /* 字体家族 */"
+                              "      };");
+    Attribute=new QLabel(this);
+    Attribute->setText("- - - - - - - -");
+    Attribute->setGeometry(170,260,65,50);
+    Attribute->setStyleSheet("QLabel {"
+                              "      background: transparent;"
+                              "      color: #ffffff; /* 文本颜色 */"
+                              "      font-size: 16px; /* 字体大小 */"
+                              "      font-family: Arial; /* 字体家族 */"
+                              "      };");
+
+    currentDate1=new QLabel(this);
+    currentDate1->setText("今天");
+    currentDate1->setGeometry(325,-10,65,50);
+    currentDate1->setStyleSheet("QLabel {"
+                                "      background: transparent;"
+                                "      color: #ffffff; /* 文本颜色 */"
+                                "      font-size: 15px; /* 字体大小 */"
+                                "      font-family: Arial; /* 字体家族 */"
+                                "      };");
+    currentDate2=new QLabel();
+    currentDate1->setText("明天");
+    currentDate1->setGeometry(375,-10,65,50);
+    currentDate2->setStyleSheet("QLabel {"
+                                "      background: transparent;"
+                                "      color: #ffffff; /* 文本颜色 */"
+                                "      font-size: 15px; /* 字体大小 */"
+                                "      font-family: Arial; /* 字体家族 */"
+                                "      };");
+    currentDate3=new QLabel();
+    currentDate3->setFixedSize(70,40);
+    currentDate1->setStyleSheet("QLabel {"
+                                "      background: transparent;"
+                                "      color: #ffffff; /* 文本颜色 */"
+                                "      font-size: 15px; /* 字体大小 */"
+                                "      font-family: Arial; /* 字体家族 */"
+                                "      };");
+    currentDate4=new QLabel();
+    currentDate4->setFixedSize(70,40);
+    currentDate1->setStyleSheet("QLabel {"
+                                "      background: transparent;"
+                                "      color: #ffffff; /* 文本颜色 */"
+                                "      font-size: 15px; /* 字体大小 */"
+                                "      font-family: Arial; /* 字体家族 */"
+                                "      };");
+    currentDate5=new QLabel();
+    currentDate5->setFixedSize(70,40);
+    currentDate1->setStyleSheet("QLabel {"
+                                "      background: transparent;"
+                                "      color: #ffffff; /* 文本颜色 */"
+                                "      font-size: 15px; /* 字体大小 */"
+                                "      font-family: Arial; /* 字体家族 */"
+                                "      };");
+    currentDate6=new QLabel();
+    currentDate6->setFixedSize(70,40);
+    currentDate1->setStyleSheet("QLabel {"
+                                "      background: transparent;"
+                                "      color: #ffffff; /* 文本颜色 */"
+                                "      font-size: 15px; /* 字体大小 */"
+                                "      font-family: Arial; /* 字体家族 */"
+                                "      };");
+
+
+    AllHlayout->addLayout(vlayout);
+
+    this->setLayout(AllHlayout);
+    manager=new QNetworkAccessManager(this);
+    connect(manager, &QNetworkAccessManager::finished, this, &My_Weather::onResult);
+    connect(provinceBox,&QComboBox::currentTextChanged,this,&My_Weather::search_city);
+    connect(cityBox,&QComboBox::currentTextChanged,this,&My_Weather::search_weather);
+
+    //加载QMap
+    wind_map.insert("无风",0);
+    wind_map.insert("软风",1);
+    wind_map.insert("轻风",2);
+    wind_map.insert("微风",3);
+    wind_map.insert("和风",4);
+    wind_map.insert("清风",5);
+    wind_map.insert("强风",6);
+    wind_map.insert("疾风",7);
+    wind_map.insert("大风",8);
+    wind_map.insert("烈风",9);
+    wind_map.insert("狂风",10);
+    wind_map.insert("暴风",11);
+    wind_map.insert("飓风",12);
+
+    this->fetchWeatherData("http://www.nmc.cn/rest/province");
+}
+
+My_Weather::~My_Weather()
+{
+    delete ui;
+}
+
+void My_Weather::setContainerBackground(QFrame *frame, const QString &imagePath) {
+    QPixmap pixmap(imagePath);
+    if (pixmap.isNull()) {
+        return;
+    }
+    QPalette palette = frame->palette();
+    palette.setBrush(QPalette::Window, QBrush(pixmap.scaled(frame->size(), Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation)));
+    frame->setAutoFillBackground(true);
+    frame->setPalette(palette);
+}
+
+void My_Weather::fetchWeatherData(const QString &url)
+{
+    request.setUrl(QUrl(url));  // 这里要确保使用正确的构造方式
+    manager->get(request);
+}
+
+void My_Weather::onResult(QNetworkReply *reply)
+{
+    if (reply->error() == QNetworkReply::NoError) {
+        //读取网络获取的信息
+        QByteArray responseData = reply->readAll();
+
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(responseData);
+        if (jsonDoc.isNull()) {
+            return;
+        }
+
+        if(jsonDoc.isArray())
+        {
+            QJsonArray jsonArray = jsonDoc.array();
+            for (const QJsonValue &value : jsonArray) {
+                if (value.isObject()) {
+                    QJsonObject obj = value.toObject();
+                    //解析城市json数据
+                    if(obj.contains("name"))
+                    {
+                        QString code = obj.value("code").toString();
+                        QString name = obj.value("name").toString();
+                        this->provinceBox->addItem(name);
+                        province_map.insert(name,code);
+                    }else if(obj.contains("city"))
+                    //解析省份json数据
+                    {
+                        QString citycode = obj.value("code").toString();
+                        QString cityname = obj.value("city").toString();
+                        this->cityBox->addItem(cityname);
+                        if(this->cityBox->count()>0&&this->cityBox->count()<2)
+                        {
+                            search_weather(cityname);
+                        }
+                        city_map.insert(cityname,citycode);
+                    }
+                }
+            }
+        }else if(jsonDoc.isObject())
+        {
+            QJsonObject jsonObject = jsonDoc.object();
+            int code = jsonObject.value("code").toInt();
+            // 检查 code 是否为 0，表示请求成功
+            if (code != 0) {
+                return;
+            }
+            // 提取 data 对象
+            QJsonObject dataObj = jsonObject.value("data").toObject();
+            // 提取 real 对象
+            QJsonObject realObj = dataObj.value("real").toObject();
+            // 提取 weather 对象
+            QJsonObject weatherObj = realObj.value("weather").toObject();
+            double temperature = weatherObj.value("temperature").toDouble();
+            this->nowtem->setText(QString::number(temperature)+"°");
+            this->nowstate->setPixmap(QPixmap(":/plc/png/fine.png"));
+
+            double humidity  = weatherObj.value("rcomfort").toDouble();
+            Now_HumNum->setText(QString::number(humidity)+"%");
+
+            // 提取 wind 对象
+            QJsonObject windObj = realObj.value("wind").toObject();
+            QString windDirect = windObj.value("direct").toString();
+            QString windPower = windObj.value("power").toString();
+            wind_direct->setText(windDirect);
+            wind_power->setText(QString::number(wind_map.value(windPower))+"级");
+
+            // 提取 predict 对象
+            QJsonObject predictObj = dataObj.value("predict").toObject();
+
+            // 提取 detail 数组
+            QJsonArray detailArray = predictObj.value("detail").toArray();
+            for (const QJsonValue &value : detailArray) {
+                if (value.isObject()) {
+                    QJsonObject detailObj = value.toObject();
+                    QString date = detailObj.value("date").toString();
+                    QString pt = detailObj.value("pt").toString();
+
+                    // 提取 day 对象
+                    QJsonObject dayObj = detailObj.value("day").toObject();
+                    QJsonObject dayWeatherObj = dayObj.value("weather").toObject();
+                    QString dayWeatherInfo = dayWeatherObj.value("info").toString();
+                    QString dayWeatherImg = dayWeatherObj.value("img").toString();
+                    QString dayTemperature = dayObj.value("temperature").toString();
+
+                    // 提取 night 对象
+                    QJsonObject nightObj = detailObj.value("night").toObject();
+                    QJsonObject nightWeatherObj = nightObj.value("weather").toObject();
+                    QString nightWeatherInfo = nightWeatherObj.value("info").toString();
+                    QString nightWeatherImg = nightWeatherObj.value("img").toString();
+                    QString nightTemperature = nightObj.value("temperature").toString();
+
+                    // 提取 precipitation
+                    double precipitation = detailObj.value("precipitation").toDouble();
+                }
+            }
+
+            // 提取 air 对象
+            QJsonObject airObj = dataObj.value("air").toObject();
+            QString forecastTime = airObj.value("forecasttime").toString();
+            int aqi = airObj.value("aqi").toInt();
+            QString aqiText = airObj.value("text").toString();
+
+            // 提取 tempchart 数组
+            QJsonArray tempchartArray = dataObj.value("tempchart").toArray();
+            for (const QJsonValue &value : tempchartArray) {
+                if (value.isObject()) {
+                    QJsonObject tempchartObj = value.toObject();
+                    QString time = tempchartObj.value("time").toString();
+                    double maxTemp = tempchartObj.value("max_temp").toDouble();
+                    double minTemp = tempchartObj.value("min_temp").toDouble();                }
+            }
+
+            // 提取 passedchart 数组
+            QJsonArray passedchartArray = dataObj.value("passedchart").toArray();
+            for (const QJsonValue &value : passedchartArray) {
+                if (value.isObject()) {
+                    QJsonObject passedchartObj = value.toObject();
+                    QString time = passedchartObj.value("time").toString();
+                    double temperature = passedchartObj.value("temperature").toDouble();
+                    double humidity = passedchartObj.value("humidity").toDouble();
+                    double pressure = passedchartObj.value("pressure").toDouble();
+               }
+            }
+        }
+    }else {
+    }
+    reply->deleteLater();
+}
+
+void My_Weather::search_city(const QString &text)
+{
+    cityBox->clear();
+    QString url="http://www.nmc.cn/rest/province/"+province_map.value(text);
+    this->fetchWeatherData(url);
+}
+
+void My_Weather::search_weather(const QString &text)
+{
+    QString url="http://www.nmc.cn/rest/weather?stationid="+city_map.value(text);
+    this->fetchWeatherData(url);
+}
+
+void My_Weather::resizeEvent(QResizeEvent *ev)
+{
+   Showlab->resize(this->size());
+}
+

@@ -1,0 +1,116 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="org.qtproject.example.untitled1"
+4    android:installLocation="auto"
+5    android:versionCode="1"
+6    android:versionName="1.0" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="23"
+9-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml
+10        android:targetSdkVersion="30" />
+10-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml
+11
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:3:5-66
+12-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:3:22-64
+13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+13-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:4:5-80
+13-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:4:22-78
+14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+14-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:5:5-78
+14-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:5:22-76
+15    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+15-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:6:5-80
+15-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:6:22-78
+16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+16-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:7:5-78
+16-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:7:22-76
+17    <uses-permission android:name="android.permission.BLUETOOTH" />
+17-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:8:5-67
+17-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:8:22-65
+18    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+18-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:9:5-73
+18-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:9:22-71
+19    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+19-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:10:5-81
+19-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:10:22-79
+20    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+20-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:11:5-79
+20-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:11:22-77
+21
+22    <supports-screens
+22-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:13:5-135
+23        android:anyDensity="true"
+23-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:13:23-48
+24        android:largeScreens="true"
+24-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:13:49-76
+25        android:normalScreens="true"
+25-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:13:77-105
+26        android:smallScreens="true" />
+26-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:13:106-133
+27
+28    <application
+28-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:14:5-24:19
+29        android:name="org.qtproject.qt.android.bindings.QtApplication"
+29-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:14:18-80
+30        android:allowNativeHeapPointerTagging="false"
+30-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:14:216-261
+31        android:debuggable="true"
+32        android:extractNativeLibs="true"
+32-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:14:81-113
+33        android:hardwareAccelerated="true"
+33-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:14:114-148
+34        android:icon="@drawable/icon"
+34-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:14:262-291
+35        android:label="小车管理系统"
+35-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:14:149-171
+36        android:requestLegacyExternalStorage="true" >
+36-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:14:172-215
+37        <activity
+37-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:15:9-23:20
+38            android:name="org.qtproject.qt.android.bindings.QtActivity"
+38-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:15:19-78
+39            android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density"
+39-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:15:138-307
+40            android:label="小车管理系统"
+40-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:15:308-330
+41            android:launchMode="singleTop"
+41-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:15:331-361
+42            android:screenOrientation="sensorLandscape"
+42-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:15:362-405
+43            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+43-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:15:79-137
+44            <intent-filter>
+44-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:16:13-19:29
+45                <action android:name="android.intent.action.MAIN" />
+45-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:17:17-68
+45-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:17:25-66
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:18:17-76
+47-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:18:27-74
+48            </intent-filter>
+49
+50            <meta-data
+50-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:20:13-87
+51                android:name="android.app.lib_name"
+51-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:20:24-59
+52                android:value="untitled1" />
+52-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:20:60-85
+53            <meta-data
+53-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:21:13-79
+54                android:name="android.app.arguments"
+54-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:21:24-60
+55                android:value="" />
+55-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:21:61-77
+56            <meta-data
+56-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:22:13-98
+57                android:name="android.app.extract_android_style"
+57-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:22:24-72
+58                android:value="minimal" />
+58-->C:\QTtest\untitled1\build\Qt_6_2_4_Clang_arm64_v8a-Debug\android-build\AndroidManifest.xml:22:73-96
+59        </activity>
+60    </application>
+61
+62</manifest>
